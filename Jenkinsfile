@@ -15,9 +15,9 @@ pipeline {
                 script {
                     echo 'Compiling Java code...'
                     if (isUnix()) {
-                        sh 'javac src/Main.java'
+                        sh 'javac Main.java'
                     } else {
-                        bat 'javac src\\Main.java'
+                        bat 'javac Main.java'
                     }
                 }
             }
@@ -28,9 +28,9 @@ pipeline {
                 script {
                     echo 'Running Java program...'
                     if (isUnix()) {
-                        sh 'java src.Main'
+                        sh 'java Main'
                     } else {
-                        bat 'java src.Main'
+                        bat 'java Main'
                     }
                 }
             }
