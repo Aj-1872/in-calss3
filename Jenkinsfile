@@ -5,7 +5,6 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 script {
-                    // This step will automatically be handled by Jenkins SCM, no need to clone manually
                     echo 'Cloning repository...'
                 }
             }
@@ -16,11 +15,9 @@ pipeline {
                 script {
                     echo 'Compiling Java code...'
                     if (isUnix()) {
-                        // Unix-based system (Linux, macOS)
-                        sh 'javac Main.java'
+                        sh 'javac src/Main.java'
                     } else {
-                        // Windows system
-                        bat 'javac Main.java'
+                        bat 'javac src\\Main.java'
                     }
                 }
             }
@@ -31,11 +28,9 @@ pipeline {
                 script {
                     echo 'Running Java program...'
                     if (isUnix()) {
-                        // Unix-based system (Linux, macOS)
-                        sh 'java Main'
+                        sh 'java src.Main'
                     } else {
-                        // Windows system
-                        bat 'java Main'
+                        bat 'java src.Main'
                     }
                 }
             }
@@ -45,7 +40,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up workspace...'
-            deleteDir()  // Clean up the workspace after build completes
+            deleteDir()
         }
     }
 }
